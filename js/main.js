@@ -68,6 +68,5 @@ function showUrl(btn) {
 
     if (urlBtn.classList[2]) {
         urlBtn.value = '';
-        console.log('1')
     }
 }
