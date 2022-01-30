@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bomber</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/styles/choices.min.css"/>
+	<link rel="stylesheet" href="scss/main.css">
+</head>
+<body>
+    
+	<header class="header">
+		<div class="container header__container">
+
+			<a href="#" class="header__logo">
+				world of media
+			</a>
+
+			<nav class="header__nav">
+				<ul class="header__list">
+
+					<li class="header__item">
+						создать пост
+					</li>
+					<li class="header__item">
+						управление
+					</li>
+
+				</ul>
+			</nav>
+
+		</div>
+	</header>
+
+	<main>
+
+		<section class="create">
+			<div class="container create__container">
+
+				<h1 class="create__heading heading">
+					Создание поста
+				</h1>
+
+				<ul class="create__list">
+
+					<li class="create__item">
+						<label for="CreateTgSelect">
+							<h2 class="create__heading_low heading_low">
+								Выбор телеграм-канала
+							</h2>
+
+							<select name="select" id="CreateTgSelect" class="create__select">
+
+								<option class="create__op" value="">
+									World of Media
+								</option>
+								<option class="create__op" value="">
+									World of Media | bot
+								</option>
+
+							</select>
+						</label>
+
+						<h2 id="CreateLowHeading" class="create__heading_low heading_low">
+							Загрузка фотографии
+						</h2>
+
+						<div class="create__filebox">
+							<input class="create__file" type="file" onchange="showFile(this)">
+							<div class="angle"></div>
+							<div class="angle"></div>
+							<div class="angle"></div>
+							<div class="angle"></div>
+						</div>
+						<span class="create__filename"></span>
+						<span class="create__clear" onclick="clearFile(this)"></span>
+					</li>
+
+					<li class="create__item">
+						<h2 class="create__heading_low heading_low">
+							Тест поста
+						</h2>
+
+						<textarea placeholder="Введите текст поста..." name="textarea" class="create__text text"></textarea>
+					</li>
+
+					<li class="create__item">
+						<button class="create__event btn" onclick="showUrl(this);">
+							Кнопка ивента
+						</button>
+						<input type="text" placeholder="Введите url..." class="create__url btn">
+
+						<div class="create__public">
+							<span>
+								Отложить запись:
+							</span>
+							<input type="text" pattern="[0-9]" maxlength="3" minlength="1" value="0">
+							<span>мин.</span>
+						</div>
+
+						<button class="create__send btn">
+							Опубликовать
+						</button>
+					</li>
+
+				</ul>
+
+			</div>
+		</section>
+
+
+		<section class="manage">
+			<div class="container manage__container">
+
+
+
+			</div>
+		</section>
+
+	</main>
+
+	<footer class="footer">
+		<div class="container footer__container">
+
+
+
+		</div>
+	</footer>
+
+
+
+	<script src="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js"></script>
+	<script src="js/main.js"></script>
+
+</body>
+</html>
