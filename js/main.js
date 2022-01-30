@@ -14,15 +14,9 @@ const choices = new Choices(selectElement, {
 const createLowHeading = document.querySelector("#CreateLowHeading");
 const dropdown = document.querySelector(".choices__list--dropdown");
 
-if (dropdown.classList[2] == 'is-active') {
-    console.log('test');
-    createLowHeading.style.padding = `${dropdown.offsetHeight}px 0px 0px 0px`;
-}
-
 document.addEventListener('click', () => {
     setTimeout(() => {
         if (dropdown.classList[2] == 'is-active') {
-            console.log('test');
             createLowHeading.style.padding = `${dropdown.offsetHeight}px 0px 0px 0px`;
         }
         if (!dropdown.classList[2]) {
@@ -31,7 +25,6 @@ document.addEventListener('click', () => {
     }, 1)
     setTimeout(() => {
         if (dropdown.classList[2] == 'is-active') {
-            console.log('test');
             createLowHeading.style.padding = `${dropdown.offsetHeight}px 0px 0px 0px`;
         }
         if (!dropdown.classList[2]) {
