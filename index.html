@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Bomber</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/styles/choices.min.css"/>
+	<link rel="stylesheet" href="scss/choices.min.css"/>
 	<link rel="stylesheet" href="scss/main.css">
 </head>
 <body>
@@ -20,10 +20,10 @@
 			<nav class="header__nav">
 				<ul class="header__list">
 
-					<li class="header__item">
+					<li data-menu="create" class="header__item is_active">
 						создать пост
 					</li>
-					<li class="header__item">
+					<li data-menu="manage" class="header__item">
 						управление
 					</li>
 
@@ -35,7 +35,7 @@
 
 	<main>
 
-		<section class="create">
+		<section data-page="create" class="create page is_active">
 			<div class="container create__container">
 
 				<h1 class="create__heading heading">
@@ -93,10 +93,9 @@
 
 						<div class="create__public">
 							<span>
-								Отложить запись:
+								Запланировать запись:
 							</span>
-							<input type="text" pattern="[0-9]" maxlength="3" minlength="1" value="0">
-							<span>мин.</span>
+							<input id="sendDate" type="text" value="">
 						</div>
 
 						<button class="create__send btn">
@@ -110,7 +109,7 @@
 		</section>
 
 
-		<section class="manage">
+		<section data-page="manage" class="manage page">
 			<div class="container manage__container">
 
 
@@ -120,17 +119,10 @@
 
 	</main>
 
-	<footer class="footer">
-		<div class="container footer__container">
 
 
-
-		</div>
-	</footer>
-
-
-
-	<script src="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js"></script>
+	<script src="js/choices.min.js"></script>
+	<script src="js/inputmask.min.js"></script>
 	<script src="js/main.js"></script>
 
 </body>

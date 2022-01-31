@@ -21,11 +21,11 @@ body {
 	color: #fff;
 
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	-moz-user-select: none;
-	-o-user-select: none;
-	-khtml-user-select: none;
-	-webkit-user-select: none;
-	user-select: none;
+}
+
+*::selection {
+	color: #222;
+    background: #fff;
 }
 
 
@@ -298,7 +298,7 @@ label[for="CreateTgSelect"] .choices {
 	font-size: 20px;
 	line-height: 120%;
 
-	color: rgba(255, 255, 255, 0.25);
+	color: #fff;
 
 	background: #191919;
 	border: none;
@@ -306,6 +306,10 @@ label[for="CreateTgSelect"] .choices {
 	outline: none;
 
 	resize: none;
+
+	&::placeholder {
+		color: rgba(255, 255, 255, 0.25);
+	}
 }
 
 .text::-webkit-scrollbar {
@@ -371,13 +375,9 @@ label[for="CreateTgSelect"] .choices {
 	
 	input {
 		padding: 0;
-		min-width: 17px;
-		max-width: 47px;
-		
-		transform: translateY(-2px);
+		max-width: 150px;
 
 		margin-left: 5px;
-		margin-right: 5px;
 
 		background: none;
 		border: none;
@@ -387,6 +387,57 @@ label[for="CreateTgSelect"] .choices {
 		color: rgba(255, 255, 255, .25);
 	}
 }
+
+
+.create {
+	position: absolute;
+	width: 100%;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.create.is_active {
+	visibility: visible;
+	opacity: 1;
+}
+
+
+.manage {
+	position: absolute;
+	width: 100%;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.manage.is_active {
+	visibility: visible;
+	opacity: 1;
+}
+
+
+.header__item {
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -5px;
+		height: 1px;
+		background: #fff;
+
+		transform: scale(0);
+		transform-origin: right;
+
+		transition: transform .25s ease;
+	}
+	&.is_active::after {
+		transform: scale(1);
+		transform-origin: left;
+	}
+}
+
 
 
 @media (max-width: 400px) {
@@ -420,3 +471,4 @@ label[for="CreateTgSelect"] .choices {
 	}
 	
 }
+

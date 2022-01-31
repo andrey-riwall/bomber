@@ -20,11 +20,16 @@ body {
   line-height: 100%;
   color: #fff;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -moz-user-select: none;
-  -o-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-      user-select: none;
+}
+
+*::-moz-selection {
+  color: #222;
+  background: #fff;
+}
+
+*::selection {
+  color: #222;
+  background: #fff;
 }
 
 .container {
@@ -284,12 +289,28 @@ label[for="CreateTgSelect"] .choices {
   padding: 15px 30px;
   font-size: 20px;
   line-height: 120%;
-  color: rgba(255, 255, 255, 0.25);
+  color: #fff;
   background: #191919;
   border: none;
   border-radius: 0;
   outline: none;
   resize: none;
+}
+
+.text::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.text:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.text::-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.text::placeholder {
+  color: rgba(255, 255, 255, 0.25);
 }
 
 .text::-webkit-scrollbar {
@@ -365,17 +386,66 @@ label[for="CreateTgSelect"] .choices {
 
 .create__public input {
   padding: 0;
-  min-width: 17px;
-  max-width: 47px;
-  -webkit-transform: translateY(-2px);
-          transform: translateY(-2px);
+  max-width: 150px;
   margin-left: 5px;
-  margin-right: 5px;
   background: none;
   border: none;
   outline: none;
   font-size: 25px;
   color: rgba(255, 255, 255, 0.25);
+}
+
+.create {
+  position: absolute;
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.create.is_active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.manage {
+  position: absolute;
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.manage.is_active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.header__item {
+  position: relative;
+}
+
+.header__item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 1px;
+  background: #fff;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  -webkit-transition: -webkit-transform .25s ease;
+  transition: -webkit-transform .25s ease;
+  transition: transform .25s ease;
+  transition: transform .25s ease, -webkit-transform .25s ease;
+}
+
+.header__item.is_active::after {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transform-origin: left;
+          transform-origin: left;
 }
 
 @media (max-width: 400px) {

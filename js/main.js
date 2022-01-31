@@ -64,3 +64,38 @@ function showUrl(btn) {
         urlBtn.value = '';
     }
 }
+
+
+// menu
+document.querySelectorAll(".header__item").forEach(function(tabsBtn) {
+  tabsBtn.addEventListener("click", function(event) {
+    const path = event.currentTarget.dataset.menu
+
+    document.querySelectorAll(".page").forEach(function(tabContent) {
+      tabContent.classList.remove('is_active')
+    });
+
+    document.querySelector(`[data-page="${path}"]`).classList.add("is_active")
+  });
+});
+
+const menuBtn = document.querySelectorAll(".header__item");
+
+for (let i=0; i<menuBtn.length; i++) {
+  menuBtn[i].onclick = function() {
+    let j = 0;
+
+    while(j < menuBtn.length) {
+      menuBtn[j++].className = "header__item";
+    };
+
+    menuBtn[i].className = "header__item is_active";
+  };
+
+};
+
+
+// input mask
+const sendDate = document.getElementById("sendDate");
+const mask = new Inputmask("99.99.9999");
+mask.mask(sendDate);
