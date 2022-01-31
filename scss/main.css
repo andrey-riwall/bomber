@@ -19,6 +19,12 @@ body {
   font-family: "Montserrat", sans-serif;
   line-height: 100%;
   color: #fff;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -moz-user-select: none;
+  -o-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+      user-select: none;
 }
 
 .container {
@@ -85,7 +91,7 @@ section {
 }
 
 .create {
-  min-height: 730px;
+  min-height: 830px;
 }
 
 .create__container {
@@ -370,5 +376,29 @@ label[for="CreateTgSelect"] .choices {
   outline: none;
   font-size: 25px;
   color: rgba(255, 255, 255, 0.25);
+}
+
+@media (max-width: 400px) {
+  .header__logo {
+    max-width: 90px;
+    font-size: 20px;
+  }
+  .header__item {
+    font-size: 15px;
+  }
+  .header__item:not(:last-child) {
+    margin-right: 20px;
+  }
+  .create__list {
+    display: block;
+    padding-bottom: 50px;
+    max-height: none;
+  }
+  .create__file::after {
+    content: 'выберете фотографию';
+  }
+  .create__url {
+    margin-bottom: 20px;
+  }
 }
 /*# sourceMappingURL=main.css.map */

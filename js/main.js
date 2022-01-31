@@ -1,34 +1,35 @@
 // selects
 
 // create telegram select
-const selectElement = document.querySelector('#CreateTgSelect');
-const choices = new Choices(selectElement, {
+const CreateSelectElement = document.querySelector('#CreateTgSelect');
+const CreateChoices = new Choices(CreateSelectElement, {
   searchEnabled: false,
   placeholder: true,
   placeholderValue: "Выберете телеграм-канал",
+  position: 'bottom',
 });
 
 
 
 // padding
-const createLowHeading = document.querySelector("#CreateLowHeading");
+const CreateLowHeading = document.querySelector("#CreateLowHeading");
 const dropdown = document.querySelector(".choices__list--dropdown");
 
 document.addEventListener('click', () => {
     setTimeout(() => {
         if (dropdown.classList[2] == 'is-active') {
-            createLowHeading.style.padding = `${dropdown.offsetHeight}px 0px 0px 0px`;
+            CreateLowHeading.style.padding = `${dropdown.offsetHeight}px 0px 0px 0px`;
         }
         if (!dropdown.classList[2]) {
-            createLowHeading.style.padding = "0px";
+            CreateLowHeading.style.padding = "0px";
         }
     }, 1)
     setTimeout(() => {
         if (dropdown.classList[2] == 'is-active') {
-            createLowHeading.style.padding = `${dropdown.offsetHeight}px 0px 0px 0px`;
+            CreateLowHeading.style.padding = `${dropdown.offsetHeight}px 0px 0px 0px`;
         }
         if (!dropdown.classList[2]) {
-            createLowHeading.style.padding = "0px";
+            CreateLowHeading.style.padding = "0px";
         }
     }, 100)
 })
