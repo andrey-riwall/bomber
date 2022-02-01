@@ -102,43 +102,6 @@ mask.mask(sendDate);
 
 // validate
 const sendBtn = document.querySelector(".create__send");
-sendBtn.onclick = () => {
-    var inputDateValue = sendDate.value;
-
-    window.dateValue = {
-        time: {
-            hours: Number(inputDateValue[0]+inputDateValue[1]),
-            mins: Number(inputDateValue[3]+inputDateValue[4]),
-
-        },
-        date: {
-            day: Number(inputDateValue[6]+inputDateValue[7]),
-            month: Number(inputDateValue[9]+inputDateValue[10]),
-            year: Number(inputDateValue[12]+inputDateValue[13]+inputDateValue[14]+inputDateValue[15]),
-        },
-    }
-
-    window.nowDateMin = +new Date() / 60000;
-    window.nowYear = new Date().getFullYear();
-
-    var inputDate = new Date(dateValue.date.year, dateValue.date.month-1, dateValue.date.day, dateValue.time.hours, dateValue.time.mins);
-    window.inputDateMin = +inputDate / 60000;
-
-    // console.log(`INPUT TIME: ${inputDateMin}`);
-    // console.log(`NOW TIME: ${nowDateMin}`);
-    
-    // console.log(inputDateValue);
-
-    changeFeb();
-    
-    if (!inputDateValue) {
-        send(nowDateMin);
-    } else if (timeH(dateValue.time.hours) && timeMin(dateValue.time.mins) && timeDay(dateValue.date.day, dateValue.date.month) && timeMonth(dateValue.date.month) && timeYear(dateValue.date.year, nowYear) && diffTime(nowDateMin, inputDateMin)) {
-        send(inputDateMin);
-    } else {
-        error();
-    }
-}
 
 hoursCount = 24;
 minsCount = 60;
@@ -172,7 +135,7 @@ var monthArray = [
 ]
 
 function changeFeb() {
-    if (window.dateValue.date.year % 4 == 0) {
+    if (dateValue.date.year % 4 == 0) {
         monthArray[1] = 29;
     } else {
         monthArray[1] = 28;
@@ -210,14 +173,111 @@ function diffTime(now, input) {
     }
 }
 
-
-
-
-
-function send() {
-    // WRITE HERE YOUR AJAX REQUEST OR U PIDOR
-    console.log('new post!')
+function dateAccept() {
+    if (!inputDateValue) {
+        send(nowDateMin);
+    } else if (timeH(dateValue.time.hours) && timeMin(dateValue.time.mins) && timeDay(dateValue.date.day, dateValue.date.month) && timeMonth(dateValue.date.month) && timeYear(dateValue.date.year, nowYear) && diffTime(nowDateMin, inputDateMin)) {
+        return true;
+    } else {
+        error();
+    }
 }
+
+
+
+// CREATE SELECT
+var tgSelectValue;
+function tgSelectData() {
+    tgSelectValue = document.querySelector('.choices__item[data-item]').textContent.trim();
+}
+
+// CREATE FILE  FIX ME!!!!!!!!!!!!!
+var createFileValue;
+function fileValueFunc() {
+    createFileValue = document.querySelector(".create__file").files[0];
+}
+
+// CREATE TEXTAREA
+var createText;
+function createTextFunc(condition) {
+    createText = document.querySelector(".create__text").value;
+    if (condition == 'return') {
+        if (createText) {
+            return true
+        } else {
+            error();
+        }
+    }
+}
+
+// CREATE URL
+var createUrl;
+function createUrlFunc() {
+    createUrl = document.querySelector(".create__url").value;
+}
+
+
+
+
+
+
 function error() {
-    console.log('new post not today(');
+    console.log('error');
+}
+
+
+
+sendBtn.onclick = () => {
+    
+    inputDateValue = sendDate.value;
+    dateValue = {
+        time: {
+            hours: Number(inputDateValue[0]+inputDateValue[1]),
+            mins: Number(inputDateValue[3]+inputDateValue[4]),
+
+        },
+        date: {
+            day: Number(inputDateValue[6]+inputDateValue[7]),
+            month: Number(inputDateValue[9]+inputDateValue[10]),
+            year: Number(inputDateValue[12]+inputDateValue[13]+inputDateValue[14]+inputDateValue[15]),
+        },
+    }
+
+    nowDateMin = +new Date() / 60000;
+    nowYear = new Date().getFullYear();
+
+    var inputDate = new Date(dateValue.date.year, dateValue.date.month-1, dateValue.date.day, dateValue.time.hours, dateValue.time.mins);
+    inputDateMin = +inputDate / 60000;
+
+    // console.log(`INPUT TIME: ${inputDateMin}`);
+    // console.log(`NOW TIME: ${nowDateMin}`);
+    // console.log(inputDateValue);
+
+    changeFeb();
+
+
+    tgSelectData();
+    fileValueFunc();
+    createTextFunc();
+    createUrlFunc();
+
+    //GLOBAL DATA OBJECT
+    globalData = {
+        createSelect: tgSelectValue,
+        createFile: createFileValue, // FIX ME!!
+        createText: createText,
+        createUrl: createUrl,
+        createDate: +inputDate,
+    }
+
+    // MAIN CONDITION!!!!!!!!!!!!!!!!!!
+    if (dateAccept() && createTextFunc('return')) {
+        send();
+    }
+}
+
+// LAST FUNC OUTPUT!!!!!!!!!!!!!
+function send() {
+    console.log(globalData);
+    console.log('PUSH!');
 }
