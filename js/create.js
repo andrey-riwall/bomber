@@ -193,8 +193,13 @@ function tgSelectData() {
 
 // CREATE FILE  FIX ME!!!!!!!!!!!!!
 var createFileValue;
-function fileValueFunc() {
+function fileValueFunc(condition) {
     createFileValue = document.querySelector(".create__file").files[0];
+    if (condition == 'return') {
+        if (createFileValue) {
+            return true;
+        }
+    }
 }
 
 // CREATE TEXTAREA
@@ -204,8 +209,6 @@ function createTextFunc(condition) {
     if (condition == 'return') {
         if (createText) {
             return true
-        } else {
-            error();
         }
     }
 }
@@ -271,8 +274,10 @@ sendBtn.onclick = () => {
     }
 
     // MAIN CONDITION!!!!!!!!!!!!!!!!!!
-    if (dateAccept() && createTextFunc('return')) {
+    if (dateAccept() && (createTextFunc('return') || fileValueFunc('return'))) {
         send();
+    } else {
+        error();
     }
 }
 
