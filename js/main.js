@@ -118,15 +118,11 @@ sendBtn.onclick = () => {
         },
     }
 
-    window.nowDateMin = parseInt(+new Date() / 60000 + 1);
-    window.nowMin = new Date().getMinutes();
-    window.nowHour = new Date().getHours();
-    window.nowDay = new Date().getDate();
-    window.nowMonth = new Date().getMonth();
+    window.nowDateMin = +new Date() / 60000;
     window.nowYear = new Date().getFullYear();
 
     var inputDate = new Date(dateValue.date.year, dateValue.date.month-1, dateValue.date.day, dateValue.time.hours, dateValue.time.mins);
-    window.inputDateMin = parseInt(+inputDate / 60000 + 1);
+    window.inputDateMin = +inputDate / 60000;
 
     // console.log(`INPUT TIME: ${inputDateMin}`);
     // console.log(`NOW TIME: ${nowDateMin}`);
@@ -212,8 +208,6 @@ function diffTime(now, input) {
     } else {
         // console.log('error');
     }
-    // nowDateMin
-    // inputDateMin
 }
 
 
