@@ -175,11 +175,9 @@ function diffTime(now, input) {
 
 function dateAccept() {
     if (!inputDateValue) {
-        send(nowDateMin);
+        return true;
     } else if (timeH(dateValue.time.hours) && timeMin(dateValue.time.mins) && timeDay(dateValue.date.day, dateValue.date.month) && timeMonth(dateValue.date.month) && timeYear(dateValue.date.year, nowYear) && diffTime(nowDateMin, inputDateMin)) {
         return true;
-    } else {
-        error();
     }
 }
 
