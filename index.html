@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Bomber</title>
+	<title>wom admin</title>
 	<link rel="stylesheet" href="scss/choices.min.css"/>
 	<link rel="stylesheet" href="scss/main.css">
 </head>
@@ -91,12 +91,12 @@
 						</button>
 						<input type="text" placeholder="Введите url..." class="create__url btn">
 
-						<div class="create__public">
+						<form id="sendForm" action="#" autocomplete="off" method="POST" class="create__public">
 							<span>
 								Запланировать запись:
 							</span>
 							<input id="sendDate" type="text" value="">
-						</div>
+						</form>
 
 						<button class="create__send btn">
 							Опубликовать
@@ -123,6 +123,7 @@
 
 	<script src="js/choices.min.js"></script>
 	<script src="js/inputmask.min.js"></script>
+	<script src="js/just-validate.production.min.js"></script>
 	<script src="js/main.js"></script>
 
 </body>

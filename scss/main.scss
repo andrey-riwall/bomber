@@ -364,20 +364,18 @@ label[for="CreateTgSelect"] .choices {
 
 
 .create__public {
-	display: flex;
-	align-items: center;
-
 	margin-bottom: 15px;
 
 	span {
+		display: block;
 		font-size: 20px;
+		margin-bottom: 10px;
 	}
 	
 	input {
+		text-align: right;
 		padding: 0;
-		max-width: 150px;
-
-		margin-left: 5px;
+		width: 100%;
 
 		background: none;
 		border: none;
