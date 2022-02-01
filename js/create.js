@@ -270,6 +270,9 @@ sendBtn.onclick = () => {
         createUrl: createUrl,
         createDate: +inputDate,
     }
+    if (!globalData.createDate) {
+        globalData.createDate = Math.ceil(nowDateMin);
+    }
 
     // MAIN CONDITION!!!!!!!!!!!!!!!!!!
     if (dateAccept() && (createTextFunc('return') || fileValueFunc('return'))) {
